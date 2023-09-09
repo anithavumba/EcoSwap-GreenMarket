@@ -1,0 +1,52 @@
+/* Reset some default browser styles */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+/* Apply some global styles to your entire application */
+.App {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  /* You can set a background color or image for the entire application */
+}
+
+/* Style the header */
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Style the footer */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Style the main content area */
+main {
+  padding: 1rem;
+}
+
+/* Style the item list */
+.item-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* Style individual items in the list */
+.item {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Add more styles for other components and elements as needed */
