@@ -1,3 +1,12 @@
 [build]
-command = "npm run build"
-publish = "build"
+  command = "npm run build" # Your build command
+  publish = "build"         # Directory to publish (usually 'build' for React apps)
+
+[build.environment]
+  NODE_VERSION = "14"       # Node.js version to use during build
+
+[build.functions]
+  directory = "functions"   # Specify if you have serverless functions
+
+[context.production]
+  command = "./deploy.sh"   # Path to your deployment script
