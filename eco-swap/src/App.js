@@ -1,87 +1,25 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import LoginForm from './components/auth/LoginForm';
 import RegistrationForm from './components/auth/RegistrationForm';
-import Home from './components/Home';
+import Home from './components/Home'; // Import your Home component
+import ItemDetail from './components/items/ItemDetail'; // Import your ItemDetail component
+import ItemList from './components/items/ItemList'; // Import your ItemList component
+import ItemSubmissionForm from './components/Forms/ItemSubmissionForm'; // Import your ItemSubmissionForm component
 
 function App() {
- const [user, setUser] = useState(null); // User state, initially null
-
   return (
     <Router>
-      <Switch>
-        <Route path="/login">
-          {!user ? <LoginForm onLogin={setUser} /> : <Redirect to="/home" />}
-        </Route>
-        <Route path="/register">
-          {!user ? <RegistrationForm onRegister={setUser} /> : <Redirect to="/home" />}
-        </Route>
-        <PrivateRoute path="/home" user={user}>
-          <Home />
-        </PrivateRoute>
-        <Redirect from="/" to="/login" />
-      </Switch>
+      <Routes>
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/register" element={<RegistrationForm />} />
+        <Route path="/home" element={<Home />} /> {/* Example route to the Home component */}
+        <Route path="/items" element={<ItemList />} /> {/* Example route to the ItemList component */}
+        <Route path="/items/:itemId" element={<ItemDetail />} /> {/* Example route to the ItemDetail component */}
+        <Route path="/submit-item" element={<ItemSubmissionForm />} /> {/* Example route to the ItemSubmissionForm component */}
+        <Route path="/" element={<Navigate to="/login" />} />
+      </Routes>
     </Router>
-  );
-}
-
-function PrivateRoute({ children, user, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        user ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/login',
-              state: { from: location },
-            }}
-          />
-        )
-      }
-    />
-  );
-}
-
-export default App; const [user, setUser] = useState(null); // User state, initially null
-
-  return (
-    <Router>
-      <Switch>
-        <Route path="/login">
-          {!user ? <LoginForm onLogin={setUser} /> : <Redirect to="/home" />}
-        </Route>
-        <Route path="/register">
-          {!user ? <RegistrationForm onRegister={setUser} /> : <Redirect to="/home" />}
-        </Route>
-        <PrivateRoute path="/home" user={user}>
-          <Home />
-        </PrivateRoute>
-        <Redirect from="/" to="/login" />
-      </Switch>
-    </Router>
-  );
-}
-
-function PrivateRoute({ children, user, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        user ? (
-          children
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/login',
-              state: { from: location },
-            }}
-          />
-        )
-      }
-    />
   );
 }
 
