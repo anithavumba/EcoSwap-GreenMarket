@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/EcoSwap-GreenMarket/static/css/main.e6c13ad2.css",
+    "main.js": "/EcoSwap-GreenMarket/static/js/main.22f1f8f2.js",
+    "static/js/787.e41eb213.chunk.js": "/EcoSwap-GreenMarket/static/js/787.e41eb213.chunk.js",
+    "index.html": "/EcoSwap-GreenMarket/index.html",
+    "main.e6c13ad2.css.map": "/EcoSwap-GreenMarket/static/css/main.e6c13ad2.css.map",
+    "main.22f1f8f2.js.map": "/EcoSwap-GreenMarket/static/js/main.22f1f8f2.js.map",
+    "787.e41eb213.chunk.js.map": "/EcoSwap-GreenMarket/static/js/787.e41eb213.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.22f1f8f2.js"
+  ]
+}
