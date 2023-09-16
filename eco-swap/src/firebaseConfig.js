@@ -15,8 +15,11 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
-firebase.initializeApp(firebaseConfig);
+console.log("Firebase initialized successfully");
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = firebase.firestore(app);
 
 export default firebase;
