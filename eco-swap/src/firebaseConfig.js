@@ -1,8 +1,7 @@
-// EcoSwap-GreenMarket/src/firebaseConfig.js
-
-import firebase from 'firebase/app';
+import { initializeApp } from 'firebase/app';
 import 'firebase/auth';
-import { getAnalytics } from "firebase/analytics";
+import 'firebase/firestore'; // Import Firestore here if you use it
+import { getAnalytics } from 'firebase/analytics';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCqT5_XkcMlmTYXABCKwy6waHld6D1VVJA",
@@ -20,6 +19,6 @@ const analytics = getAnalytics(app);
 console.log("Firebase initialized successfully");
 
 // Initialize Cloud Firestore and get a reference to the service
-const db = firebase.firestore(app);
+const db = app.firestore();
 
-export default firebase;
+export { app, analytics, db }; // Export the Firebase app, analytics, and Firestore

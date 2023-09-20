@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import LoginForm from './components/auth/LoginForm';
 import RegistrationForm from './components/auth/RegistrationForm';
-import Home from './components/Home'; // Import your Home component
-import ItemDetail from './components/items/ItemDetail'; // Import your ItemDetail component
-import ItemList from './components/items/ItemList'; // Import your ItemList component
-import ItemSubmissionForm from './components/Forms/ItemSubmissionForm'; // Import your ItemSubmissionForm component
+import Home from './components/Home';
+import ItemDetail from './components/items/ItemDetail';
+import ItemList from './components/items/ItemList';
+import ItemSubmissionForm from './components/Forms/ItemSubmissionForm';
 
 function App() {
+  useEffect(() => {
+    console.log('Firebase initialized successfully');
+  }, []);
+
   return (
     <Router>
       <Routes>
