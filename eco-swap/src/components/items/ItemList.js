@@ -1,30 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Search from './Search';
 
 function ItemList() {
-  const items = [
-    {
-      id: 1,
-      title: 'Reusable Water Bottle',
-      description: 'Stay hydrated and eco-friendly with this reusable water bottle.',
-    },
-    {
-      id: 2,
-      title: 'Organic Cotton Tote Bag',
-      description: 'Ditch plastic bags and carry your groceries in this eco-friendly tote bag.',
-    },
-    // Add more items as needed
-  ];
+  const [searchResults, setSearchResults] = useState([]);
+  
+  // Define a search function that handles the search logic
+  const handleSearch = (query) => {
+    // Perform the search logic here, e.g., filter items based on the query
+    // Replace this with your actual search logic
+    const filteredResults = items.filter((item) =>
+      item.name.toLowerCase().includes(query.toLowerCase())
+    );
+    
+    // Update the search results state with the filtered items
+    setSearchResults(filteredResults);
+  };
 
   return (
-    <div className="item-list">
-      <h2>Items for Swap</h2>
+    <div>
+      <h2>Item List</h2>
+      <Search onSearch={handleSearch} />
+      {/* Display the search results */}
       <ul>
-        {items.map((item) => (
-          <li key={item.id}>
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-            {/* Add a button/link to view item details */}
-          </li>
+        {searchResults.map((item) => (
+          <li key={item.id}>{item.name}</li>
         ))}
       </ul>
     </div>

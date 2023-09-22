@@ -1,51 +1,44 @@
+// Login.js
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { auth } from './firebase'; // Import Firebase auth object
 
-function LoginForm() {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const history = useHistory();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Handle form submission (e.g., login logic)
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      history.push('/dashboard'); // Redirect to the dashboard upon successful login
+    } catch (error) {
+      console.error('Login error:', error);
+    }
   };
 
   return (
-    <div className="login-form">
+    <div>
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
+      <form onSubmit={handleLogin}>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <button type="submit">Login</button>
       </form>
     </div>
   );
 }
 
-export default LoginForm;
+export default Login;

@@ -1,59 +1,45 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { auth } from './firebase';
 
 function RegistrationForm() {
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-  });
+  const [email, setEmail] = useState(''); // Use setEmail to update the email state
+  const [password, setPassword] = useState(''); // Use setPassword to update the password state
+  const history = useHistory();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    // Handle form submission (e.g., registration logic)
+
+    try {
+      await auth.createUserWithEmailAndPassword(email, password);
+      history.push('/dashboard'); // Redirect to the dashboard upon successful registration
+    } catch (error) {
+      console.error('Registration error:', error);
+    }
   };
 
   return (
-    <div className="registration-form">
+    <div>
       <h2>Register</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="username">Username</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
+      <form onSubmit={handleRegister}>
+        <label>
+          Email:
           <input
             type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)} // Update email state
             required
           />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
+        </label>
+        <label>
+          Password:
           <input
             type="password"
-            id="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)} // Update password state
             required
           />
-        </div>
+        </label>
         <button type="submit">Register</button>
       </form>
     </div>

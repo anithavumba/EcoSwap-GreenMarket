@@ -9,7 +9,7 @@ root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>
-
 );
 
-// ...
+// Call the reportWebVitals function
+reportWebVitals(console.log); // You can replace 'console.log' with your preferred analytics service.
