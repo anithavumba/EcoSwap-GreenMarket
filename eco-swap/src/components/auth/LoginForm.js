@@ -1,19 +1,19 @@
-// Login.js
+// LoginForm.js
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate instead of useHistory
-import { auth } from './firebase'; // Import Firebase auth object
+import { useNavigate } from 'react-router-dom';
+import { auth } from './eco-swap/src/components/auth/firebase';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Use useNavigate instead of useHistory
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
       await auth.signInWithEmailAndPassword(email, password);
-      navigate('/dashboard'); // Redirect to the dashboard upon successful login
+      navigate('/dashboard');
     } catch (error) {
       console.error('Login error:', error);
     }
@@ -23,7 +23,19 @@ function Login() {
     <div>
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
-        {/* Rest of your component code... */}
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)} // Bind email input to setEmail
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)} // Bind password input to setPassword
+        />
+        <button type="submit">Login</button>
       </form>
     </div>
   );
