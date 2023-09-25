@@ -35,7 +35,7 @@ function App() {
         <Route path="/search" element={<Search />} />
 
         {/* Listing Items Route */}
-        <Route path="/list-items" element={<ListingItems />} />
+        <Route path="/list-items" element={<ItemList />} />
 
         {/* Buying Items Route */}
         <Route path="/buy-items" element={<BuyingItems />} />

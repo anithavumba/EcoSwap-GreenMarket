@@ -1,7 +1,7 @@
 // LoginForm.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth } from './eco-swap/src/components/auth/firebase';
+import { auth } from '/home/EcoSwap-GreenMarket/eco-swap/src/firebaseConfig';
 
 function Login() {
   const [email, setEmail] = useState('');

@@ -1,7 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore'; // Import Firestore here if you use it
 import { getAnalytics } from 'firebase/analytics';
+import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCqT5_XkcMlmTYXABCKwy6waHld6D1VVJA",
@@ -14,12 +13,11 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
-export const auth = app.auth();
+const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const auth = getAuth(app);
 console.log("Firebase initialized successfully");
 
 // Initialize Cloud Firestore and get a reference to the service
-const db = app.firestore();
 
-export { app, analytics, db }; // Export the Firebase app, analytics, and Firestore
+export { app, analytics, auth }; // Export the Firebase app, analytics, and Firestore
