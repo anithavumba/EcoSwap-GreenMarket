@@ -1,6 +1,6 @@
-// LoginForm.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '/home/EcoSwap-GreenMarket/eco-swap/src/firebaseConfig';
 
 function Login() {
@@ -11,8 +11,14 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
 
+    if (!isEmailValid(email)) {
+      console.error('Invalid email format');
+      return; // Don't proceed with login if the email format is invalid
+    }
+
     try {
-      await auth.signInWithEmailAndPassword(email, password);
+      const auth = getAuth();
+      await signInWithEmailAndPassword(auth, email, password);
       navigate('/dashboard');
     } catch (error) {
       console.error('Login error:', error);
