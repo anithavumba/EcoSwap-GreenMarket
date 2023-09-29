@@ -8,6 +8,7 @@ import { getAuth } from 'firebase/auth';
 import firebaseConfig from './firebaseConfig';
 
 const firebaseApp = initializeApp(firebaseConfig);
+// eslint-disable-next-line
 const auth = getAuth(firebaseApp);
 
 const root = createRoot(document.getElementById('root'));
