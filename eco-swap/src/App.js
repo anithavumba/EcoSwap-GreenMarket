@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import firebaseConfig from './firebaseConfig';
 
 // Import your components
 import LandingPage from './LandingPage';
@@ -13,25 +16,29 @@ import ItemDetail from './components/items/ItemDetail';
 import ItemSubmissionForm from './components/Forms/ItemSubmissionForm';
 import Logout from './components/Logout';
 
-function App() {
-  useEffect(() => {
-    console.log('Firebase initialized successfully');
-  }, []);
+const firebaseApp = initializeApp(firebaseConfig);
+	// eslint-disable-next-line
+	const auth = getAuth(firebaseApp);
 
-  return (
-    <Router>
-      <Routes>
-        {/* Landing Page */}
-        <Route path="/" element={<LandingPage />} />
+	function App() {
+	  useEffect(() => {
+	    console.log('Firebase initialized successfully');
+	  }, []);
 
-        {/* Login and Registration Routes */}
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/register" element={<RegistrationForm />} />
+	  return (
+	    <Router>
+	      <Routes>
+		{/* Landing Page */}
+		<Route path="/" element={<LandingPage />} />
 
-        {/* Dashboard Route */}
-        <Route path="/dashboard" element={<Dashboard />} />
+		{/* Login and Registration Routes */}
+		<Route path="/login" element={<LoginForm />} />
+		<Route path="/register" element={<RegistrationForm />} />
 
-        {/* Search Route */}
+		{/* Dashboard Route */}
+		<Route path="/dashboard" element={<Dashboard />} />
+
+		{/* Search Route */}
         <Route path="/search" element={<Search />} />
 
         {/* Listing Items Route */}

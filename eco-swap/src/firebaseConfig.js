@@ -20,4 +20,6 @@ console.log("Firebase initialized successfully");
 
 // Initialize Cloud Firestore and get a reference to the service
 
-export { app, analytics, auth }; // Export the Firebase app, analytics, and Firestore
+export { app, analytics, auth };
+
+export default firebaseConfig;
