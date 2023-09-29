@@ -16,7 +16,7 @@ function LoginForm() {
     e.preventDefault();
 
     if (!isEmailValid(email)) {
-      console.error('Invalid email format');
+      console.error('Login error:', error);
       return; // Don't proceed with login if the email format is invalid
     }
 
@@ -25,7 +25,7 @@ function LoginForm() {
       await signInWithEmailAndPassword(auth, email, password);
       navigate('/dashboard');
     } catch (error) {
-      console.error('Login error:', error);
+      console.error('Login error:', error.code, error.message);
     }
   };
 

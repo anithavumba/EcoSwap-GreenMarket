@@ -47,7 +47,7 @@ function RegistrationForm() {
 
       navigate('/dashboard');
     } catch (error) {
-      console.error('Registration error:', error);
+      console.error('Registration error:', error.code, error.message);
     }
   };
 
