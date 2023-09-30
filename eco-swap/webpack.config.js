@@ -1,10 +1,20 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js', // Your entry point
+  mode: 'development', // or 'production'
+  entry: {
+    main: './src/index.js', // Main entry point
+    dynamicFeature: './src/dynamicFeature.js', // Entry point for code splitting
+  },
   output: {
-    filename: 'static/js/main.js',
-    path: path.resolve(__dirname, 'dist'), // Your output directory
+    filename: 'static/js/[name].[contenthash].js', // Use placeholders for dynamic filenames
+    path: path.resolve(__dirname, 'dist'),
+    clean: true, // Clean the 'dist' directory before each build
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all', // Enable code splitting for all chunks
+    },
   },
   module: {
     rules: [

@@ -16,7 +16,7 @@ function LoginForm() {
     e.preventDefault();
 
     if (!isEmailValid(email)) {
-      console.error('Login error:', error);
+      console.error('Login error:, Invalid email format');
       return; // Don't proceed with login if the email format is invalid
     }
 
