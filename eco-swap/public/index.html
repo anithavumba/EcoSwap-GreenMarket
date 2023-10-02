@@ -1,61 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>EcoSwap</title>
-    <meta name="description" content="Welcome to EcoSwap GreenMarket - Your one-stop destination for eco-friendly products and sustainable living. Explore a wide range of eco-friendly items, from clothing to home goods, and make a positive impact on the environment.">
-    <meta name="keywords" content="EcoSwap, GreenMarket, eco-friendly products, sustainable living, eco-friendly clothing, sustainable home goods, environmentally friendly shopping">
-    <link rel="stylesheet" href="your-custom-stylesheet.css">
-    <script src="App.js"></script>
-    <script src="/static/js/main.js"></script> 
-  </head>
-  <body>
-    <div id="root"></div>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EcoSwap</title>
+  <meta name="description" content="Welcome to EcoSwap GreenMarket - Your one-stop destination for eco-friendly products and sustainable living. Explore a wide range of eco-friendly items, from clothing to home goods, and make a positive impact on the environment.">
+  <meta name="keywords" content="EcoSwap, GreenMarket, eco-friendly products, sustainable living, eco-friendly clothing, sustainable home goods, environmentally friendly shopping">
+  <link rel="stylesheet" href="your-custom-stylesheet.css">
+  <!-- Add your Firebase SDK initialization script here -->
+  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCqT5_XkcMlmTYXABCKwy6waHld6D1VVJA",
+      authDomain: "eco-swap-fb873.firebaseapp.com",
+      projectId: "eco-swap-fb873",
+      storageBucket: "eco-swap-fb873.appspot.com",
+      messagingSenderId: "1017226138288",
+      appId: "1:1017226138288:web:e3ca15ab366cd09bf32175",
+      measurementId: "G-1PGZL048X7"
+    };
 
-    <script>
-      // Add your Firebase SDK initialization here (if needed)
-      const firebaseConfig = {
-       apiKey: "AIzaSyCqT5_XkcMlmTYXABCKwy6waHld6D1VVJA",
-       authDomain: "eco-swap-fb873.firebaseapp.com",
-       projectId: "eco-swap-fb873",
-       storageBucket: "eco-swap-fb873.appspot.com",
-       messagingSenderId: "1017226138288",
-       appId: "1:1017226138288:web:e3ca15ab366cd09bf32175",
-       measurementId: "G-1PGZL048X7"
-      };
-    </script>
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  <style media="screen">
+    /* Add your custom CSS styles here */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #4CAF50; /* Set the background color to green */
+      margin: 0; /* Remove default margin */
+    }
 
-    <!-- Optional: If you want to load other Firebase SDK features, do it here -->
-    <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase.js"></script>
+    /* Add your custom logo styling here */
+    #logo {
+      width: 100px; /* Set the width of your logo */
+      height: auto; /* Maintain the aspect ratio */
+      display: block; /* Ensure it's centered */
+      margin: 0 auto; /* Center horizontally */
+      padding: 20px 0; /* Add some spacing */
+    }
+  </style>
+</head>
+<body>
+  <!-- Add your logo here -->
+  <img id="logo" src="/images/eco.png" alt="EcoSwap Logo">
 
-    <style media="screen">
-      /* ... Your custom CSS styles ... */
-      /* Example custom CSS styles */
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-      }
-    </style>
-  </head>
-  <body>
-    <!-- ... Rest of your HTML ... -->
-     <!-- Header section -->
-    <header>
-      <!-- Header content -->
-    </header>
+  <!-- Rest of your HTML content -->
+  <div id="root"></div>
 
-    <!-- Main content section -->
-    <main>
-      <!-- Main content -->
-    </main>
+  <!-- Optional: If you have other scripts to include, add them here -->
+  <script src="https://www.gstatic.com/firebasejs/10.4.0/firebase.js"></script>
 
-    <!-- Footer section -->
-    <footer>
-      <!-- Footer content -->
-    </footer>
-
-    <!-- Additional scripts or content -->
-
-  </body>
+</body>
 </html>

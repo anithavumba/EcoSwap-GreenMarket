@@ -16,12 +16,12 @@ function LoginForm() {
     e.preventDefault();
 
     if (!isEmailValid(email)) {
-      console.error('Login error:, Invalid email format');
+      console.error('Login error: Invalid email format');
       return; // Don't proceed with login if the email format is invalid
     }
 
     try {
-      const auth = getAuth();
+      const auth = getAuth(); // Get the Firebase auth instance
       await signInWithEmailAndPassword(auth, email, password);
       navigate('/dashboard');
     } catch (error) {
