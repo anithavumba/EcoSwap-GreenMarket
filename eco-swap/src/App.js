@@ -3,12 +3,11 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import firebaseConfig from './firebaseConfig';
-import { getDatabase } from 'firebase/database'; 
 import LandingPage from './LandingPage'; // Used LandingPage import
-import login from './login'; // Used LoginForm import
+import login from './login'; // Used Login import
 import RegistrationForm from './components/auth/RegistrationForm'; // Used RegistrationForm import
 import Dashboard from './components/Dashboard'; // Used Dashboard import
-import Home from './components/Home';
+import Home from './components/Home'; // Used Home import
 import Search from './components/Search'; // Used Search import
 import ItemList from './components/items/ItemList'; // Used ItemList import
 import BuyingItems from './components/items/BuyingItems'; // Used BuyingItems import
@@ -18,32 +17,31 @@ import Logout from './components/Logout'; // Used Logout import
 
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
-const db = getDatabase(firebaseApp);
 
 function App() {
-  const [user, setUser] = useState(null); // Used user state
-  const [email, setEmail] = useState(''); // Used email state
-  const [password, setPassword] = useState(''); // Used password state
-  const [hasAccount, setHasAccount] = useState(true); // Used hasAccount state
-  const [emailError, setEmailError] = useState(''); // Used emailError state
-  const [passwordError, setPasswordError] = useState(''); // Used passwordError state
-const clearInputs = () => {
-  setEmail('');
-  setPassword('');
-};
+  const [user, setUser] = useState(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [hasAccount, setHasAccount] = useState(true);
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
-const handleLogin = () => {
-    firebasedb
-      .auth()
+  const clearInputs = () => {
+    setEmail('');
+    setPassword('');
+  };
+
+  const handlelogin = () => {
+    auth
       .signInWithEmailAndPassword(email, password)
       .catch((err) => {
         switch (err.code) {
-          case "auth/Invalid-email":
-          case "auth/user-disabled":
-          case "auth/user-not-found":
+          case 'auth/Invalid-email':
+          case 'auth/user-disabled':
+          case 'auth/user-not-found':
             setEmailError(err.message);
             break;
-          case "auth/wrong-password":
+          case 'auth/wrong-password':
             setPasswordError(err.message);
             break;
           default:
@@ -51,17 +49,16 @@ const handleLogin = () => {
       });
   };
 
-const handleSignUp = () => {
-    firebasedb
-      .auth()
+  const handleSignUp = () => {
+    auth
       .createUserWithEmailAndPassword(email, password)
       .catch((err) => {
         switch (err.code) {
-          case "auth/email-already-in-use":
-          case "auth/invalid-email":
+          case 'auth/email-already-in-use':
+          case 'auth/invalid-email':
             setEmailError(err.message);
             break;
-          case "auth/weak-password":
+          case 'auth/weak-password':
             setPasswordError(err.message);
             break;
           default:
@@ -69,37 +66,33 @@ const handleSignUp = () => {
       });
   };
 
-const handleLogout = () => {
-  firebasedb
-    .auth()
-    .signOut()
-    .then(() => {
-      clearInputs();
-      setUser(null);
-    })
-    .catch((error) => {
-      console.error('Logout error:', error.code, error.message);
-    });
-};
+  const handleLogout = () => {
+    auth.signOut()
+      .then(() => {
+        clearInputs();
+        setUser(null);
+      })
+      .catch((error) => {
+        console.error('Logout error:', error.code, error.message);
+      });
+  };
 
-
-const authListener = () => {
-    firebasedb.auth().onAuthStateChanged((user) => {
+  const authListener = () => {
+    auth.onAuthStateChanged((user) => {
       if (user) {
         clearInputs();
         setUser(user);
       } else {
-        setUser("");
+        setUser('');
       }
     });
   };
 
-useEffect(() => {
-
+  useEffect(() => {
     authListener();
-  }, []);
+  }, [authListener]); // Include authListener in the dependency array
 
-return (
+  return (
     <div className="App">
       {user ? (
         <Home handleLogout={handleLogout} />
@@ -109,7 +102,7 @@ return (
           setEmail={setEmail}
           password={password}
           setPassword={setPassword}
-          handleLogin={handlelogin}
+          handlelogin={handlelogin}
           handleSignUp={handleSignUp}
           hasAccount={hasAccount}
           setHasAccount={setHasAccount}
