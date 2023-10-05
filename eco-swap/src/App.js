@@ -97,6 +97,11 @@ function App() {
       {user ? (
         <Home handleLogout={handleLogout} />
       ) : (
+        <>
+          {/* Use LandingPage component when user is not logged in */}
+          <LandingPage />
+
+          {/* Use Login component when user is not logged in */}
         <login
           email={email}
           setEmail={setEmail}
