@@ -9,11 +9,11 @@ function LandingPage() {
       <p>Your one-stop destination for eco-friendly products and sustainable living.</p>
       <p>Explore a wide range of eco-friendly items, from clothing to home goods, and make a positive impact on the environment.</p>
       
-      <Link to="/register">
+      <Link to="/SignUp">
         <button>Register</button>
       </Link>
       
-      <Link to="/login">
+      <Link to="/Login">
         <button>Login</button>
       </Link>
     </div>
