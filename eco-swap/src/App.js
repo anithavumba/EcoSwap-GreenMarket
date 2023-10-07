@@ -42,7 +42,7 @@ function App() {
           {/* Use Signup component for the sign-up page */}
           <Route path="/signup" element={<SignUp />} />
           {/* Add the following route for the dashboard */}
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/Dashboard" element={<Dashboard />} />
 
           {/* Use Logout component for the logout page */}
           <Route path="/logout" element={<Logout />} />
