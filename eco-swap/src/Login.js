@@ -11,7 +11,7 @@ const Login = () => {
   const handleLogin = async () => {
     try {
       await auth.signInWithEmailAndPassword(email, password);
-      navigate('/dashboard');
+      navigate('/Dashboard');
     } catch (error) {
       setError(error.message);
     }
